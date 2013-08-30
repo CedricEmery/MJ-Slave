@@ -1,23 +1,29 @@
-#ifndef FIGHT_WINDOW_H
-#define FIGHT_WINDOW_H
+#ifndef FIGHT_WINDOW_VIEW_H
+#define FIGHT_WINDOW_VIEW_H
 
 #include <QApplication>
 #include <QMainWindow>
-#include <QTabWidget>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QResizeEvent>
 
-class fight_Window : public QMainWindow
+#include "infoTabView.h"
+#include "personageTabView.h"
+
+
+class fightWindowView : public QMainWindow
 {
 public:
-    fight_Window();
-    ~fight_Window();
+    fightWindowView();
+    ~fightWindowView();
 
     void resize(QSize newSize);
+    void resizeEvent(QResizeEvent * event);
 
 private:
-    QTabWidget* m_personageView;
-    QTabWidget* m_informationsView;
+    personageTabView* m_personageView;
+
+    infoTabView* m_informationsView;
 
     QPushButton* m_addButton;
     QPushButton* m_modifyButton;
@@ -27,9 +33,6 @@ private:
     QPushButton* m_nextButton;
 
     QTableWidget* m_initiativeOrderGrid;
-
-
-    QSize m_bBaseSize;
 };
 
-#endif // FIGHT_WINDOW_H
+#endif // FIGHT_WINDOW_VIEW_H

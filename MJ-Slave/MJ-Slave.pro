@@ -1,7 +1,11 @@
 SOURCES += \
     main.cpp \
-    fight_window.cpp
+    fightWindowView.cpp \
+    infoTabView.cpp \
+    personageTabView.cpp
 QT +=widgets
 
 HEADERS += \
-    fight_window.h
+    fightWindowView.h \
+    infoTabView.h \
+    personageTabView.h

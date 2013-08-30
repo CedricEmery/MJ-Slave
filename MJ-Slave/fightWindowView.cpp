@@ -1,13 +1,9 @@
-#include "fight_window.h"
+#include "fightWindowView.h"
 
-fight_Window::fight_Window()
+fightWindowView::fightWindowView()
 {
-
-    m_bBaseSize.setHeight(600);
-    m_bBaseSize.setWidth(800);
-
-    m_informationsView = new QTabWidget(this);
-    m_personageView = new QTabWidget(this);
+    m_informationsView = new infoTabView(this);
+    m_personageView = new personageTabView(this);
 
     m_addButton = new QPushButton(this);
     m_modifyButton = new QPushButton(this);
@@ -19,10 +15,18 @@ fight_Window::fight_Window()
     m_attackButton = new QPushButton(this);
     m_nextButton = new QPushButton(this);
 
-    this->resize(m_bBaseSize);
+    QSize baseSize;
+    baseSize.setHeight(600);
+    baseSize.setWidth(800);
+    this->resize(baseSize);
+
+    QSize minSize;
+    minSize.setHeight(300);
+    minSize.setWidth(400);
+    this->setMinimumSize(minSize);
 }
 
-fight_Window::~fight_Window()
+fightWindowView::~fightWindowView()
 {
     /*
     if(m_personageView != NULL)
@@ -33,7 +37,7 @@ fight_Window::~fight_Window()
     */
 }
 
-void fight_Window::resize(QSize newSize)
+void fightWindowView::resize(QSize newSize)
 {
     QMainWindow::resize(newSize);
 
@@ -101,4 +105,12 @@ void fight_Window::resize(QSize newSize)
     x += newSize.width() / 2;
     m_nextButton->move(x, y);
     m_nextButton->resize(buttonSize);
+}
+
+void fightWindowView::resizeEvent(QResizeEvent * event)
+{
+    QMainWindow::resizeEvent(event);
+
+    QSize windowSize = this->size();
+    this->resize(windowSize);
 }
