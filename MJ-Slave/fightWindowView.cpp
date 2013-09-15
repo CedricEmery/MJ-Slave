@@ -15,15 +15,7 @@ fightWindowView::fightWindowView()
     m_attackButton = new QPushButton(this);
     m_nextButton = new QPushButton(this);
 
-    QSize baseSize;
-    baseSize.setHeight(600);
-    baseSize.setWidth(800);
-    this->resize(baseSize);
-
-    QSize minSize;
-    minSize.setHeight(300);
-    minSize.setWidth(400);
-    this->setMinimumSize(minSize);
+    init();
 }
 
 fightWindowView::~fightWindowView()
@@ -35,6 +27,29 @@ fightWindowView::~fightWindowView()
     if(m_informationsView != NULL)
         delete m_informationsView;
     */
+}
+
+void fightWindowView::init()
+{
+    // definition de la taille de base de la fenettre
+    QSize baseSize;
+    baseSize.setHeight(600);
+    baseSize.setWidth(800);
+    this->resize(baseSize);
+
+    // definition de la taille minimale de la fenettre
+    QSize minSize;
+    minSize.setHeight(300);
+    minSize.setWidth(400);
+    this->setMinimumSize(minSize);
+
+    // definition du texte des boutons
+    m_attackButton->setText("Attaquer");
+    m_nextButton->setText("Suivant");
+    m_addButton->setText("+");
+    m_modifyButton->setText("M");
+    m_delButton->setText("-");
+    m_duplicateButton->setText("C");
 }
 
 void fightWindowView::resize(QSize newSize)

@@ -17,7 +17,9 @@ public:
     fightWindowView();
     ~fightWindowView();
 
+    void init();
     void resize(QSize newSize);
+
     void resizeEvent(QResizeEvent * event);
 
 private:

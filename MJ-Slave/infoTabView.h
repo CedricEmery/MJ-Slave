@@ -7,6 +7,7 @@
 #include "generalInfoView.h"
 #include "spellInfoView.h"
 #include "skillInfoView.h"
+#include "fightInfoView.h"
 
 class infoTabView : public QTabWidget
 {
@@ -15,8 +16,10 @@ public:
 
 private:
     generalInfoView* m_principalGrid;
+    fightInfoView* m_fightGrid;
     spellInfoView* m_spellGrid;
     skillInfoView* m_skillGrid;
+    skillInfoView* m_spetialGrid;
 };
 
 #endif // INFO_TAB_VIEW_H
