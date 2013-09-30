@@ -9,18 +9,30 @@
 
 #include "infoTabView.h"
 #include "personageTabView.h"
+#include "fightWindow.h"
+#include "creatPerso.h"
 
 
 class fightWindowView : public QMainWindow
 {
+    Q_OBJECT
+
 public:
-    fightWindowView();
+    fightWindowView(QWidget *parent = 0);
     ~fightWindowView();
 
     void init();
     void resize(QSize newSize);
 
     void resizeEvent(QResizeEvent * event);
+
+public slots:
+    void attack();
+    void next();
+    void addPersonage();
+    void modifyPersonage();
+    void delPersonage();
+    void duplicatePersonage();
 
 private:
     personageTabView* m_personageView;

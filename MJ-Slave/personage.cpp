@@ -1,11 +1,17 @@
 #include "personage.h"
 
+personage::personage()
+{
+    setNom("Nouveau Personnage");
+    setIsPJ(false);
+}
+
 personage::personage(QList<gift> gift, QList<spell> spell, QList<skill> skill, QList<specialSkill> specialSkill, QList<attaque> attaque
                      , QList<QString> langue, QList<QString> particularite, QList<QString> sens, QList<QString> environement
                      , QList<QString> organisationSociale, QList<QString> tresor, QList<QString> region, QString nom, QString type
                      , QString sousType, QString sauvegarde, int xp, int initiative, int resistanceFisique, int vigueur, int volontee
                      , int CA, int CAContact, int CADepourvu, int PVMax, int PV, int deplacement, int force, int dexterite
-                     , int constitution, int intelligence, int sagesse, int charisme, int BBA, int BMO, int DMD)
+                     , int constitution, int intelligence, int sagesse, int charisme, int BBA, int BMO, int DMD, bool isPJ)
 {
     for(int i = 0; i < gift.size(); i++)
     {
@@ -79,6 +85,7 @@ personage::personage(QList<gift> gift, QList<spell> spell, QList<skill> skill, Q
     setBBA(BBA);
     setBMO(BMO);
     setDMD(DMD);
+    setIsPJ(isPJ);
 }
 
 
@@ -662,4 +669,14 @@ int personage::blesser(int nbDegas)
 {
     setPV(getPV()-nbDegas);
     return getPV();
+}
+
+void personage::setIsPJ(bool isPJ)
+{
+    m_isPJ = isPJ;
+}
+
+bool personage::getIsPJ()
+{
+    return m_isPJ;
 }

@@ -12,7 +12,8 @@ SOURCES += \
     gift.cpp \
     skill.cpp \
     attaque.cpp \
-    fightInfoView.cpp
+    fightInfoView.cpp \
+    creatPerso.cpp
 QT +=widgets
 
 HEADERS += \
@@ -28,4 +29,5 @@ HEADERS += \
     gift.h \
     skill.h \
     attaque.h \
-    fightInfoView.h
+    fightInfoView.h \
+    creatPerso.h

@@ -10,15 +10,20 @@
 #include "skill.h"
 #include "attaque.h"
 
+#define PNJ 0
+#define PJ 1
+
 class personage
 {
 public:
+    personage();
+
     personage(QList<gift> gift, QList<spell> spell, QList<skill> skill, QList<specialSkill> specialSkill, QList<attaque> attaque
               , QList<QString> langue, QList<QString> particularite, QList<QString> sens, QList<QString> environement
               , QList<QString> organisationSociale, QList<QString> tresor, QList<QString> region, QString nom, QString type
               , QString sousType, QString sauvegarde, int xp, int initiative, int resistanceFisique, int vigueur, int volontee
               , int CA, int CAContact, int CADepourvu, int PVMax, int PV, int deplacement, int force, int dexterite
-              , int constitution, int intelligence, int sagesse, int charisme, int BBA, int BMO, int DMD);
+              , int constitution, int intelligence, int sagesse, int charisme, int BBA, int BMO, int DMD, bool isPJ);
 
     void addGift(gift gift);
     void delGift(int idTab);
@@ -164,6 +169,9 @@ public:
     void setDMD(int DMD);
     int getDMD();
 
+    void setIsPJ(bool isPJ);
+    bool getIsPJ();
+
     int blesser(int nbDegas);
 
 private:
@@ -210,6 +218,8 @@ private:
     int m_BBA;
     int m_BMO;
     int m_DMD;
+
+    bool m_isPJ;
 };
 
 #endif // PERSONAGE_H

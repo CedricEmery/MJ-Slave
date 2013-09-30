@@ -1,6 +1,7 @@
 #include "fightWindowView.h"
 
-fightWindowView::fightWindowView()
+fightWindowView::fightWindowView(QWidget *parent):
+    QMainWindow(parent)
 {
     m_informationsView = new infoTabView(this);
     m_personageView = new personageTabView(this);
@@ -50,6 +51,14 @@ void fightWindowView::init()
     m_modifyButton->setText("M");
     m_delButton->setText("-");
     m_duplicateButton->setText("C");
+
+    //branchement des boutons
+    QObject::connect(m_attackButton, SIGNAL(clicked()), this, SLOT(attack()));
+    QObject::connect(m_nextButton, SIGNAL(clicked()), this, SLOT(next()));
+    QObject::connect(m_addButton, SIGNAL(clicked()), this, SLOT(addPersonage()));
+    QObject::connect(m_modifyButton, SIGNAL(clicked()), this, SLOT(modifyPersonage()));
+    QObject::connect(m_delButton, SIGNAL(clicked()), this, SLOT(delPersonage()));
+    QObject::connect(m_duplicateButton, SIGNAL(clicked()), this, SLOT(duplicatePersonage()));
 }
 
 void fightWindowView::resize(QSize newSize)
@@ -129,3 +138,42 @@ void fightWindowView::resizeEvent(QResizeEvent * event)
     QSize windowSize = this->size();
     this->resize(windowSize);
 }
+
+void fightWindowView::attack()
+{
+
+}
+
+void fightWindowView::next()
+{
+
+}
+
+void fightWindowView::addPersonage()
+{
+    personage* newPerso= new personage();
+    creatPerso* newPersoWindow = new creatPerso(newPerso);
+    newPersoWindow->exec();
+
+    if(newPersoWindow->result() == QDialog::Accepted)
+    {
+        m_personageView->addPersonage(*newPerso);
+        m_personageView->chargementListePerso();
+    }
+}
+
+void fightWindowView::modifyPersonage()
+{
+
+}
+
+void fightWindowView::delPersonage()
+{
+
+}
+
+void fightWindowView::duplicatePersonage()
+{
+
+}
+
